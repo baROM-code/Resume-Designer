@@ -1,0 +1,23 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /resume-core
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:resume;MODE=PostgreSQL
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: false
+jwt:
+  secret: r7rrzk56lcqc0xcmg23f0322kt73rbffo5u2w9rqzhma7jwzvhgm6sehhg95dytb
+  lifetime: 36000000

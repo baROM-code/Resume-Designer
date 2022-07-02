@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html ng-app="resume">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+
+<div class="container" ng-controller="indexController">
+    <nav class="navbar navbar-light" style="background-color: #7FFFD4;">
+        
+		<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item" ng-show="!isUserLoggedIn()" style="padding: 4px;">
+                    <button class="btn btn-outline-primary btn-sm" ng-click="tryToLoin()">Войти</button>
+                </li>
+                <li class="nav-item" ng-show="isUserLoggedIn()" style="padding: 4px;">
+                    <button class="btn btn-outline-secondary btn-sm" ng-click="tryToLogout()">Выйти</button>
+                </li>
+            </ul>
+		</div>
+    </nav>
+    <p></p>
+    <h1>Конструктор резюме</h1>
+    <br>
+    <p>Для создания резюме нажмите кнопку «Создать своё резюме», вас перенаправит к форме составления.</p>
+	<p>Далее, пошагово подробно внесите личную информацию, информацию о вашем образовании и опыте(если он есть).</p>
+	<p>После возможно скачать резюме в формате pdf или создать мини-сайт со своим резюме.</p>
+
+    <button class="btn btn-success" ng-click="createResume()">Создать своё резюме</button>
+
+</div>
+</body>
+</html>
