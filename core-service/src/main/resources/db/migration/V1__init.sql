@@ -12,7 +12,7 @@ create table users
     updated_at    timestamp default current_timestamp
 );
 
-create table working
+create table works
 (
     id           bigserial primary key,
     user_id      bigint      not null references users (id),
@@ -25,7 +25,7 @@ create table working
     updated_at   timestamp default current_timestamp
 );
 
-create table education
+create table educations
 (
     id           bigserial primary key,
     user_id      bigint       not null references users (id),
@@ -36,7 +36,7 @@ create table education
     updated_at   timestamp default current_timestamp
 );
 
-create table resume
+create table resumes
 (
     id           bigserial primary key,
     user_id      bigint       not null references users (id),
@@ -48,5 +48,13 @@ create table resume
     updated_at   timestamp default current_timestamp
 );
 
+insert into users (id, userfirstname, userlastname, password, gender, dateofbirth, email) values
+(1, 'Иван', 'Иванов', '', 'M', '1980-01-01','ivan@email.ru');
 
+insert into works (user_id, organization, post, startwork, endwork, progress) values
+(1, 'R&k', 'Системный администратор', '2000-01-01', '2010-01-01', 'Много работал'),
+(1, '1C', 'Программист', '2011-01-01', '2015-01-01', 'Обновлял и редактировал конфигурацию 1С, делал формы отчетов');
+
+insert into educations (user_id, organization, speciality, year_end) values
+(1, 'МГУ', 'информационные технологии', '2002-07-01');
 
