@@ -1,4 +1,4 @@
-package ru.devteam.exceptions;
+package ru.devteam.resume.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
