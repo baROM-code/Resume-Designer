@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html ng-app="resume">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>авторизация</title>
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<div class="top_cont">
+    <div class="container top_box">
+        <ul class="header">
+            <li><a href="index.html"><img src="img/logo.svg" alt="logo">Главная</a></li>
+            <li><a href="resume.html"><img src="img/kontact.svg" alt="kontact">Резюме</a>
+                <a href="login.html"><img src="img/kontact.svg" alt="kontact">Вход</a></li>
+        </ul>
+    </div>
+</div>
+<div class="top__info_heading">
+    <h2 class="head-contact">Форма контактов</h2>
+    <p class="projec__text_cont">Пока контакты, но можно разместить несколько форм заполнения резюме. </p>
+</div>
+<div class="contact">
+    <div class="container">
+        <div class="contactlist__container">
+            <div class="login-wrap">
+                <div class="login-html">
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Вход</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2"
+                                                                                     class="tab">Регистрация</label>
+                    <div class="login-form">
+                        <div class="sign-in-htm">
+                            <div class="group">
+                                <label for="user" class="label">Логин</label>
+                                <input id="user" type="text" class="input">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Пароль</label>
+                                <input id="pass" type="password" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <input id="check" type="checkbox" class="check" checked>
+                                <label for="check"><span class="icon"></span> Оставаться в системе</label>
+                            </div>
+                            <div class="group">
+                                <input type="submit" class="button" value="Войти">
+                            </div>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <a href="#forgot">Забыли пароль?</a>
+                            </div>
+                        </div>
+                        <div class="sign-up-htm">
+                            <div class="group">
+                                <label for="user" class="label">Логин</label>
+                                <input id="user" type="text" class="input">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Пароль</label>
+                                <input id="pass" type="password" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Повторить пароль</label>
+                                <input id="confirmpass" type="password" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Email Адрес</label>
+                                <input id="email" type="text" class="input">
+                            </div>
+                            <div class="group">
+                                <input type="submit" class="button" value="Регистрация">
+                            </div>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <label for="tab-1">Уже зарегистрированы?</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer__tab container">
+
+        <div class="footer__top_button">
+            <div class="footer_button1">
+                <h3 class="footer__head_text">Заголовок текста подвала</h3>
+                <div class="footer__top1">
+                    <p class="footer__text">Текст подвала, consectetur adipisicing elit, sed do
+                        eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                </div>
+            </div>
+            <div class="footer_button">
+                <a href="#" class="footer__button_btn">Вверх</a>
+            </div>
+        </div>
+        <hr class="footer__bottom_ras">
+        <div class="footer__bottom">
+            <div class="footer__bottom_list">
+                <ul class="footer_contacts text_footer">
+                    <li class="footer_contact_item">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                    <li class="footer_contact_item">+7(999) 999-22-11</li>
+                    <li class="footer_contact_item">mailito@mail.ru</li>
+                </ul>
+                <div class="footer__copy">
+                    <p class="footer__text-bottom_copy">2022 © All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>
