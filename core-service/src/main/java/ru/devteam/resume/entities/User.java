@@ -2,6 +2,8 @@ package ru.devteam.resume.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,10 +23,10 @@ public class User {
     private String photo;
 
     @Column(name = "firstname")
-    private String firstname;
+    private String firstName;
 
     @Column(name = "lastname")
-    private String lastname;
+    private String lastName;
 
     @Column(name = "password")
     private String password;
@@ -33,7 +35,7 @@ public class User {
     private char gender;
 
     @Column(name = "dateofbirth")
-    private LocalDateTime dateofbirth;
+    private LocalDateTime dateOfBirth;
 
     @Column(name = "email")
     private String email;
@@ -50,12 +52,12 @@ public class User {
 //            joinColumns = @JoinColumn(name = "user_id"))
 //    private List<Education> educations;
 //
-//    @CreationTimestamp
-//    @Column(name = "created_at")
-//    private LocalDateTime created_at;
-//
-//    @UpdateTimestamp
-//    @Column(name = "updated_at")
-//    private LocalDateTime updated_at;
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
 }

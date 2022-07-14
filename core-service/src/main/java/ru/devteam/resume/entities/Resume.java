@@ -29,13 +29,13 @@ public class Resume {
     private String schedule; // График работы (Полный день, Гибкий график, Удаленная работа, Подработка)
 
     @Column(name = "about_myself")
-    private String about_myself;
+    private String aboutMyself;
 
     @CreationTimestamp
     @Column(name = "created_at")
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 }

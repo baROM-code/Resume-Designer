@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CreateNewUserDto {
     private String photo;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String password;
     private char gender;
-    private LocalDateTime dateofbirth;
+    private LocalDateTime dateOfBirth;
     private String email;
 
 
