@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html ng-app="resume">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>резюме</title>
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="top_cont">
+    <div class="container top_box">
+        <ul class="header">
+            <li><a href="index.html"><img src="img/logo.svg" alt="logo">Главная</a></li>
+            <li><a href="resume.html"><img src="img/kontact.svg" alt="kontact">Резюме</a>
+                <a href="login.html"><img src="img/kontact.svg" alt="kontact">Вход</a></li>
+        </ul>
+    </div>
+</div>
+<div class="top__info_heading">
+    <h2 class="head-contact">Форма создания резюме</h2>
+    <p class="projec__text_cont">Пока контакты, но можно разместить несколько форм заполнения резюме. </p>
+</div>
+<div class="contact">
+    <div class="container">
+        <div class="contactlist__container" ng-controller = "resumeController">
+            <div class="contactlist-right" ng-controller = "resumeController">
+                <div class="contactlist-right-container" ng-controller = "resumeController">
+                    <h4 class="head_text_message">ОСНОВНАЯ ИНФОРМАЦИЯ</h4>
+                    <form ng-submit="createNewResume()">
+                        <p></p>
+                        <input class="contactlist__message_name_input" type="text" id="newFirstName" ng-model="newResume.firstname" placeholder="Имя">
+                        <input class="contactlist__message_name_input" type="text" id="newLastName" ng-model="newResume.lastname" placeholder="Фамилия">
+                        <input class="contactlist__message_name_input" type="password" id="newPassword" ng-model="newResume.password" placeholder="Пароль">
+
+                        <input class="contactlist__message_name_input" type="email" id="newEmail" ng-model="newResume.email" placeholder="mail@mail.ru">
+                        <input class="contactlist__message_name_input" type="text" id="newGender" ng-model="newResume.gender" placeholder="Муж/Жен">
+                        <input class="contactlist__message_name_input" type="date" id="newDateofbirth" ng-model="newResume.dateofbirth" placeholder=Дата Рождения>
+                        <input class="contactlist__message_name_input" type="text" id="newPhoto" ng-model="newResume.photo" placeholder="Фото">
+                        <p></p>
+                        <button class="contactlist__message_name_button" type="submit">Отправить</button>
+                    </form>
+                </div>
+
+                <div class="contactlist-right-container">
+                                        <h4 class="head_text_message">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</h4>
+                                        <form action="#">
+                                            <p class="full__name">Телефон</p>
+                                            <input class="contactlist__message_name_input" type="email" placeholder="+7 (900) 333 22 22">
+                                            <p class="full__name">Дата рождения</p>
+                                            <input class="contactlist__message_name_input" type="text" placeholder="Дата рождения">
+                                            <p class="full__name">Email</p>
+                                            <input class="contactlist__message_name_input" type="email" placeholder="Email@mail.ru">
+                                            <p></p>
+                                            <a href="#" class="contactlist__message_name_button" type="submit">Отправить</a>
+                                        </form>
+
+
+            </div>
+<!--            <div class="contactlist-right">-->
+<!--                <div class="contactlist-right-container">-->
+<!--                    <h4 class="head_text_message">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</h4>-->
+<!--                    <form action="#">-->
+<!--                        <p class="full__name">Телефон</p>-->
+<!--                        <input class="contactlist__message_name_input" type="email" placeholder="+7 (900) 333 22 22">-->
+<!--                        <p class="full__name">Дата рождения</p>-->
+<!--                        <input class="contactlist__message_name_input" type="text" placeholder="Дата рождения">-->
+<!--                        <p class="full__name">Email</p>-->
+<!--                        <input class="contactlist__message_name_input" type="email" placeholder="Email@mail.ru">-->
+<!--                        <p></p>-->
+<!--                        <a href="#" class="contactlist__message_name_button" type="submit">Отправить</a>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="contactlist__container">
+            <div class="contactlist-right">
+                <div class="contactlist-right-container">
+                    <h4 class="head_text_message"></h4>
+                    <form action="#">
+                        <p class="full__name">Уровень зарплаты</p>
+                        <input class="contactlist__message_name_input" type="text" placeholder="Зарплата">
+                        <p class="full__name">Желаемая должность</p>
+                        <input class="contactlist__message_name_input" type="text" placeholder="Должность">
+                        <p class="full__name">График работы</p>
+                        <input class="contactlist__message_name_input" type="text" placeholder="График работы">
+                        <p></p><a href="#" class="contactlist__message_name_button" type="submit">Отправить</a>
+                    </form>
+                </div>
+            </div>
+            <div class="contactlist-right">
+                <div class="contactlist-right-container">
+                    <h4 class="head_text_message"></h4>
+                    <form action="#">
+                        <p class="full__name">Опыт работы</p>
+                        <input class="contactlist__message_name_input" type="text" placeholder="Опыт работы">
+                        <p class="full__name">Образование</p>
+                        <input class="contactlist__message_name_input" type="text" placeholder="Образование">
+                        <p class="full__name">Знания и навыки</p>
+                        <input class="contactlist__message_name_input" type="text" placeholder="Знания и навыки">
+                        <p></p>
+                        <a href="#" class="contactlist__message_name_button" type="submit">Отправить</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer__tab container">
+        <div class="footer__top_button">
+            <div class="footer_button1">
+                <h3 class="footer__head_text">Заголовок текста подвала</h3>
+                <div class="footer__top1">
+                    <p class="footer__text">Текст подвала, consectetur adipisicing elit, sed do
+                        eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                </div>
+            </div>
+            <div class="footer_button">
+                <a href="#" class="footer__button_btn">Вверх</a>
+            </div>
+        </div>
+        <hr class="footer__bottom_ras">
+        <div class="footer__bottom">
+            <div class="footer__bottom_list">
+                <ul class="footer_contacts text_footer">
+                    <li class="footer_contact_item">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                    <li class="footer_contact_item">+7(999) 999-22-11</li>
+                    <li class="footer_contact_item">mailito@mail.ru</li>
+                </ul>
+                <div class="footer__copy">
+                    <p class="footer__text-bottom_copy">2022 © All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
