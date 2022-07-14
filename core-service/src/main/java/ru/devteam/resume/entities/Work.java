@@ -1,4 +1,4 @@
-package ru.devteam.entities;
+package ru.devteam.resume.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,15 +20,26 @@ public class Work {
     @Column(name = "id")
     private Long id;
 
-    //private Long user_id;
+    @Column(name = "organization")
     private String organization;
+
+    @Column(name = "post")
     private String post;
+
+    @Column(name = "startwork")
     private LocalDate startwork;
+
+    @Column(name = "endwork")
     private LocalDate endwork;
+
+    @Column(name = "progress")
     private String progress;
 
     @CreationTimestamp
+    @Column(name = "created_at")
     private LocalDateTime created_at;
+
     @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updated_at;
 }
