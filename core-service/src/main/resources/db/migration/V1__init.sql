@@ -7,9 +7,9 @@ create table users
     password      varchar(16) not null,
     gender        char,
     dateofbirth   varchar(50),
-    email         varchar(50) unique
---     created_at    timestamp default current_timestamp,
---     updated_at    timestamp default current_timestamp
+    email         varchar(50) unique,
+    created_at    timestamp default current_timestamp,
+    updated_at    timestamp default current_timestamp
 );
 
 create table works
@@ -62,4 +62,4 @@ values (1, 'МГУ', 'информационные технологии', '2002-
 
 
 insert into educations (user_id, organization, speciality, year_end)
-values (1, 'МГУ', 'информационные технологии', '2002-07-01');
+values (1, 'НГУ', 'системная инженерия', '2012-08-01');

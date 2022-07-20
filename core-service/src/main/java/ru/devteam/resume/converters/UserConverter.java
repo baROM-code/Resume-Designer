@@ -11,11 +11,11 @@ public class UserConverter {
     public UserDto entityToDto(User u) {
         UserDto userDto = new UserDto();
         userDto.setId(u.getId());
-        userDto.setFirstname(u.getFirstname());
-        userDto.setLastname(u.getLastname());
+        userDto.setFirstName(u.getFirstName());
+        userDto.setLastName(u.getLastName());
         userDto.setEmail(u.getEmail());
         userDto.setGender(u.getGender());
-        userDto.setDateofbirth(u.getDateofbirth());
+        userDto.setDateOfBirth(u.getDateOfBirth());
         userDto.setPhoto(u.getPhoto());
         return userDto;
     }

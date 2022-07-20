@@ -27,19 +27,19 @@ public class Work {
     private String post;
 
     @Column(name = "startwork")
-    private LocalDate startwork;
+    private LocalDate startWork;
 
     @Column(name = "endwork")
-    private LocalDate endwork;
+    private LocalDate endWork;
 
     @Column(name = "progress")
     private String progress;
 
     @CreationTimestamp
     @Column(name = "created_at")
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 }

@@ -21,7 +21,7 @@ public class Education {
     private Long id;
 
     @Column(name = "user_id")
-    private Long user_id;
+    private Long userId;
 
     @Column(name = "organization")
     private String organization;
@@ -30,14 +30,14 @@ public class Education {
     private String speciality;
 
     @Column(name = "year_end")
-    private LocalDate year_end;
+    private LocalDate yearEnd;
 
     @CreationTimestamp
     @Column(name = "created_at")
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 }
 
