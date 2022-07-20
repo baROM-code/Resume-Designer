@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import ru.devteam.resume.enums.ScheduleType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,6 +20,9 @@ public class Resume {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "post")
     private String post;
 
@@ -26,7 +30,8 @@ public class Resume {
     private Long salary;
 
     @Column(name = "schedule")
-    private String schedule; // График работы (Полный день, Гибкий график, Удаленная работа, Подработка)
+    @Enumerated(EnumType.STRING)
+    private ScheduleType schedule;
 
     @Column(name = "about_myself")
     private String aboutMyself;

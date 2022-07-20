@@ -2,6 +2,7 @@ package ru.devteam.resume.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.devteam.resume.enums.GenderType;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +13,7 @@ public class CreateNewUserDto {
     private String firstName;
     private String lastName;
     private String password;
-    private char gender;
+    private GenderType gender;
     private LocalDateTime dateOfBirth;
     private String email;
 

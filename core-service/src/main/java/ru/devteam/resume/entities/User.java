@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import ru.devteam.resume.enums.GenderType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -32,7 +33,8 @@ public class User {
     private String password;
 
     @Column(name = "gender")
-    private char gender;
+    @Enumerated (EnumType.STRING)
+    private GenderType gender;
 
     @Column(name = "dateofbirth")
     private LocalDateTime dateOfBirth;
