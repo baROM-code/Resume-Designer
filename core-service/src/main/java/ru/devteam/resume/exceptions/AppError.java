@@ -1,4 +1,4 @@
-package ru.devteam.exceptions;
+package ru.devteam.resume.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
