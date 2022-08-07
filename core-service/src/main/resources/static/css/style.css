@@ -313,7 +313,7 @@ body {
 }
 
 .contactlist-right {
-    height: 1800px;
+    height: 900px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -324,6 +324,7 @@ body {
     /* justify-content: center; */
     /* width: 340px;
               height: 400px; */
+    margin-top: 32px;
     background: #FFFFFF;
     -webkit-box-shadow: 5px 10px 50px rgba(16, 112, 177, 0.2);
     box-shadow: 5px 10px 50px rgba(16, 112, 177, 0.2);
@@ -363,6 +364,7 @@ body {
     box-sizing: border-box;
     border-radius: 10px;
     padding: 25px 128px;
+    width: 500px;
 }
 
 .contactlist__message_name_mail {
@@ -416,6 +418,8 @@ body {
     text-decoration: none;
     display: inline-block;
     margin-top: 72px;
+    margin-left: 55px;
+    width: 500px;
 }
 
 .map {
