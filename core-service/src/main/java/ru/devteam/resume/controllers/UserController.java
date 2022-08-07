@@ -19,10 +19,6 @@ public class UserController {
     private final UserService userService;
     private final UserConverter userConverter;
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.findAll();
-    }
 
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id) {
@@ -30,10 +26,12 @@ public class UserController {
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь с id:" + id + " не найден")));
     }
 
+    /*
     @DeleteMapping("/{id}")
     public void deleteUserById(@PathVariable Long id) {
         userService.deleteById(id);
     }
+     */
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
