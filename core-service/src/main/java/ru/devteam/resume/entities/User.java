@@ -9,6 +9,7 @@ import ru.devteam.resume.enums.GenderType;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
@@ -43,18 +44,12 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @ManyToMany
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 
-
-//    @OneToMany
-//    @JoinTable(name = "works",
-//            joinColumns = @JoinColumn(name = "user_id"))
-//    private List<Work> works;
-//
-//    @OneToMany
-//    @JoinTable(name = "educations",
-//            joinColumns = @JoinColumn(name = "user_id"))
-//    private List<Education> educations;
-//
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;

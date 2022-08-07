@@ -20,4 +20,4 @@ spring:
         web-allow-others: false
 jwt:
   secret: r7rrzk56lcqc0xcmg23f0322kt73rbffo5u2w9rqzhma7jwzvhgm6sehhg95dytb
-  lifetime: 36000000
+  lifetime: 600000
