@@ -6,12 +6,12 @@
 	<packaging>pom</packaging>
 
 	<modules>
-	    <module>api</module>
+<!--	    <module>api</module>-->
 		<module>core-service</module>
-        <module>auth-service</module>
-		<module>front-service</module>
-		<module>pdf-service</module>
-		<module>website-srvice</module>
+<!--        <module>auth-service</module>-->
+<!--		<module>front-service</module>-->
+<!--		<module>pdf-service</module>-->
+<!--		<module>website-srvice</module>-->
     </modules>
 	
 	<groupId>ru.devteam</groupId>
