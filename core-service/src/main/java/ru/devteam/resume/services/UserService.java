@@ -27,8 +27,8 @@ public class UserService {
     public void createNewUser(CreateNewUserDto createNewUserDto) {
         User user = new User();
         user.setPhoto(createNewUserDto.getPhoto());
-        user.setFirstname(createNewUserDto.getFirstname());
-        user.setLastname(createNewUserDto.getLastname());
+        user.setFirstName(createNewUserDto.getFirstName());
+        user.setLastName(createNewUserDto.getLastName());
         user.setGender(createNewUserDto.getGender());
         user.setEmail(createNewUserDto.getEmail());
         user.setPassword(createNewUserDto.getPassword());
