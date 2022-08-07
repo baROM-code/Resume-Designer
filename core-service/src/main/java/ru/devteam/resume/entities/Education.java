@@ -1,4 +1,4 @@
-package ru.devteam.entities;
+package ru.devteam.resume.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,25 +10,34 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "works")
+@Table(name = "educations")
 @NoArgsConstructor
 @Data
-public class Work {
+public class Education {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    //private Long user_id;
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name = "organization")
     private String organization;
-    private String post;
-    private LocalDate startwork;
-    private LocalDate endwork;
-    private String progress;
+
+    @Column(name = "speciality")
+    private String speciality;
+
+    @Column(name = "year_end")
+    private LocalDate yearEnd;
 
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }
+

@@ -1,4 +1,4 @@
-package ru.devteam.exceptions;
+package ru.devteam.resume.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {
