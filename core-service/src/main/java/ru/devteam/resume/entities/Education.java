@@ -29,6 +29,9 @@ public class Education {
     @Column(name = "speciality")
     private String speciality;
 
+    @Column(name = "year_start")
+    private LocalDate yearStart;
+
     @Column(name = "year_end")
     private LocalDate yearEnd;
 

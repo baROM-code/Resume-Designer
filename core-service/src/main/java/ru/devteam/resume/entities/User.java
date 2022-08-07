@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import ru.devteam.resume.enums.GenderType;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -37,7 +38,7 @@ public class User {
     private GenderType gender;
 
     @Column(name = "dateofbirth")
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Column(name = "email")
     private String email;

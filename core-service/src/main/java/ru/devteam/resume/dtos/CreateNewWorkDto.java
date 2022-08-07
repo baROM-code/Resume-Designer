@@ -7,11 +7,10 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-public class EducationDto {
-    private Long id;
-    private Long userId;
+public class CreateNewWorkDto {
     private String organization;
-    private String speciality;
-    private LocalDate yearStart;
-    private LocalDate yearEnd;
+    private String post;
+    private LocalDate startWork;
+    private LocalDate endWork;
+    private String progress;
 }
