@@ -7,16 +7,18 @@ import ru.devteam.resume.entities.Education;
 
 @Component
 public class EducationConverter {
-    public CreateNewEducationDto entityToDto(Education e) {
-        CreateNewEducationDto createNewEducationDto = new CreateNewEducationDto();
-//        createNewEducationDto.setUserId(e.getUserId());
-        createNewEducationDto.setOrganization(e.getOrganization());
-        createNewEducationDto.setSpeciality(e.getSpeciality());
-        createNewEducationDto.setYearEnd(e.getYearEnd());
-        return createNewEducationDto;
+    public EducationDto entityToDto(Education education) {
+        EducationDto educationDto = new EducationDto();
+        educationDto.setId(education.getId());
+        educationDto.setUserId(education.getUserId());
+        educationDto.setOrganization(education.getOrganization());
+        educationDto.setSpeciality(education.getSpeciality());
+        educationDto.setYearStart(education.getYearStart());
+        educationDto.setYearEnd(education.getYearEnd());
+        return educationDto;
     }
 
-    public Education dtoToEntity (EducationDto educationDto) {
+    public Education dtoToEntity(EducationDto educationDto) {
         Education education = new Education();
         education.setId(educationDto.getId());
         education.setUserId(educationDto.getUserId());

@@ -1,23 +1,24 @@
 package ru.devteam.resume.converters;
 
 import org.springframework.stereotype.Component;
-import ru.devteam.resume.dtos.ResumeDto;
+import ru.devteam.resume.dtos.ResumeFullDto;
+import ru.devteam.resume.dtos.ResumeShortDto;
 import ru.devteam.resume.entities.Resume;
 
 @Component
 public class ResumeConverter {
-    public ResumeDto entityToDto(Resume r) {
-        ResumeDto resumeDto = new ResumeDto();
-        resumeDto.setId(r.getId());
-        resumeDto.setUserId(r.getUserId());
-        resumeDto.setPost(r.getPost());
-        resumeDto.setSalary(r.getSalary());
-        resumeDto.setSchedule(r.getSchedule());
-        resumeDto.setAboutMyself(r.getAboutMyself());
+    public ResumeShortDto entityToShortDto(Resume resume) {
+        ResumeShortDto resumeDto = new ResumeShortDto();
+        resumeDto.setId(resume.getId());
+        resumeDto.setUserId(resume.getUserId());
+        resumeDto.setPost(resume.getPost());
+        resumeDto.setSalary(resume.getSalary());
+        resumeDto.setSchedule(resume.getSchedule());
+        resumeDto.setAboutMyself(resume.getAboutMyself());
         return resumeDto;
     }
 
-    public Resume dtoToEntity (ResumeDto resumeDto) {
+    public Resume shortDtoToEntity (ResumeShortDto resumeDto) {
         Resume resume = new Resume();
         resume.setId(resumeDto.getId());
         resume.setUserId(resumeDto.getUserId());
@@ -26,5 +27,16 @@ public class ResumeConverter {
         resume.setSchedule(resumeDto.getSchedule());
         resume.setAboutMyself(resumeDto.getAboutMyself());
         return resume;
+    }
+
+    public ResumeFullDto entityToFullDto(Resume resume) {
+        ResumeFullDto resumeDto = new ResumeFullDto();
+        resumeDto.setId(resume.getId());
+        resumeDto.setUserId(resume.getUserId());
+        resumeDto.setPost(resume.getPost());
+        resumeDto.setSalary(resume.getSalary());
+        resumeDto.setSchedule(resume.getSchedule());
+        resumeDto.setAboutMyself(resume.getAboutMyself());
+        return resumeDto;
     }
 }

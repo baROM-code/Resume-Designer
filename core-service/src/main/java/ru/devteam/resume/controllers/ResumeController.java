@@ -4,19 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.devteam.resume.converters.ResumeConverter;
-import ru.devteam.resume.converters.UserConverter;
 import ru.devteam.resume.dtos.CreateNewResumeDto;
-import ru.devteam.resume.dtos.ResumeDto;
-import ru.devteam.resume.dtos.WorkDto;
-import ru.devteam.resume.entities.Resume;
-import ru.devteam.resume.exceptions.ResourceNotFoundException;
-import ru.devteam.resume.services.EducationService;
+import ru.devteam.resume.dtos.ResumeFullDto;
+import ru.devteam.resume.dtos.ResumeShortDto;
 import ru.devteam.resume.services.ResumeService;
-import ru.devteam.resume.services.UserService;
-import ru.devteam.resume.services.WorkService;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/resumes")
@@ -24,29 +18,20 @@ import java.util.Optional;
 public class ResumeController {
     private final ResumeService resumeService;
     private final ResumeConverter resumeConverter;
-    private final UserService userService;
-    private final UserConverter userConverter;
-    private final EducationService educationService;
-    private final WorkService workService;
 
     @GetMapping
-    public List<Resume> getAllResumes() {
-        return resumeService.findAll();
+    public List<ResumeShortDto> getAllResumes() {
+        return resumeService.findAll().stream().map(resumeConverter::entityToShortDto).collect(Collectors.toList());
     }
 
     @GetMapping("user/{userId}")
-    public List<Resume> getAllResumesByUserId(@PathVariable Long userId){
-        return resumeService.findResumesByUserId(userId);
+    public List<ResumeShortDto> getAllResumesByUserId(@PathVariable Long userId){
+        return resumeService.findResumesByUserId(userId).stream().map(resumeConverter::entityToShortDto).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public ResumeDto getResumeById(@PathVariable Long id) {
-        ResumeDto resumeDto = resumeConverter.entityToDto(resumeService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Резюме с id: " + id + " не найдено")));
-        Long userId = resumeDto.getUserId();
-        resumeDto.setUserData(userConverter.entityToDto(userService.findById(userId).orElseThrow(() -> new ResourceNotFoundException("Пользователь с id: " + userId + " не найден"))));
-        resumeDto.setEducations(educationService.findAllEducationsByUseId(userId));
-        resumeDto.setWorks(workService.findAllWorksByUseId(userId));
-        return resumeDto;
+    public ResumeFullDto getResumeById(@PathVariable Long id) {
+        return resumeService.getFullResumeById(id);
     }
 
     @PostMapping()
@@ -55,11 +40,9 @@ public class ResumeController {
         resumeService.createNew(createNewResumeDto);
     }
 
-    @PutMapping("/update/{id}")
-    public void updateResume(@PathVariable Long id, @RequestBody ResumeDto resumeDto) {
-        resumeDto.setId(id);
-        resumeService.update(resumeConverter.dtoToEntity(resumeDto));
+    @PutMapping("/update")
+    public void updateResume(@RequestBody ResumeShortDto resumeShortDto) {
+        resumeService.update(resumeConverter.shortDtoToEntity(resumeShortDto));
     }
-
 
 }
