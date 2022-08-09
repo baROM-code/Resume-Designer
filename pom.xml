@@ -16,7 +16,7 @@
 	
 	<groupId>ru.devteam</groupId>
 	<artifactId>Resume-Designer</artifactId>
-	<version>6.4-2022</version>
+	<version>7.1-2022</version>
 	<name>Resume-Designer</name>
 	<description>Resume Designer project for Spring Boot from Command Dev Java</description>
 	

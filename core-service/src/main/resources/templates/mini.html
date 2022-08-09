@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Минисайт</title>
+
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/resume_v1.css}" rel="stylesheet"/>
+</head>
+<body id="page-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                                             th:src="${resume.photo}" alt="..."/></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">О СЕБЕ</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">РАБОТА</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">ОБРАЗОВАНИЕ</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">НАВЫКИ И УМЕНИЯ</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid p-0">
+    <section class="resume-section" id="about">
+        <div class="resume-section-content">
+            <div class="d-flex flex-column flex-md-row mb-2">
+                <h1 class="mb-0" th:text="${resume.firstName}"></h1>
+                <h1 class="text-primary mb-0 ms-lg-4" th:text="${resume.lastName}"></h1>
+            </div>
+            <p th:text="${resume.dateOfBirth}"></p>
+            <div class="subheading mb-5">
+                <a th:href="'mailto:' + ${resume.email}" th:text="${resume.email}"></a>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0" th:text="${resume.post}"></h3>
+                    <!--
+                    <div class="subheading mb-3">resume.schedule | scheduleType</div>
+                    -->
+                </div>
+                <div class="flex-shrink-0"><h3 class="text-primary" th:text="${resume.salary}"></h3></div>
+
+            </div>
+            <p th:text="${resume.aboutMyself}"></p>
+        </div>
+</div>
+</section>
+<hr class="m-0"/>
+
+<section class="resume-section" id="experience">
+    <div class="resume-section-content">
+        <h2 class="text-primary mb-5">Работа</h2>
+        <div th:each="w : ${resume.works}" class="d-flex flex-column flex-md-row justify-content-between mb-5"
+             ng-repeat="w in resume.works">
+            <div class="flex-grow-1">
+                <h3 class="mb-0" th:text="${w.post}"></h3>
+                <div class="subheading mb-3" th:text="${w.organization}"></div>
+                <p th:text="${w.progress}"></p>
+            </div>
+            <div class="flex-shrink-0">
+                    <span class="text-primary"
+                          th:text="${#temporals.format(w.startWork, 'MM.yyyy')} + ' - ' + ${#temporals.format(w.endWork, 'MM.yyyy')}">
+                    </span>
+                <p th:text="${#temporals.format(localDate, 'MM-yyyy')}"></p>
+            </div>
+        </div>
+    </div>
+</section>
+<hr class="m-0"/>
+
+<section class="resume-section" id="education">
+    <div class="resume-section-content">
+        <h2 class="text-primary mb-5">Образование</h2>
+        <div th:each="e : ${resume.educations}" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                <h3 class="mb-0" th:text="${e.organization}"></h3>
+                <div class="subheading mb-3" th:text="${e.speciality}"></div>
+                <div>Уровень образования (надо добавить)</div>
+            </div>
+            <div class="flex-shrink-0">
+                <span class="text-primary"
+                      th:text="${#temporals.format(e.yearStart, 'yyyy')} + ' - ' + ${#temporals.format(e.yearEnd, 'yyyy')}">
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+<hr class="m-0"/>
+
+<section class="resume-section" id="skills">
+    <div class="resume-section-content">
+        <h2 class="text-primary mb-5">НАВЫКИ И УМЕНИЯ</h2>
+        <div class="subheading mb-3">Языки программирования и инструменты</div>
+        <ul class="list-inline dev-icons">
+            <li class="list-inline-item"><i class="fab fa-html5"></i></li>
+            <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+            <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
+            <li class="list-inline-item"><i class="fab fa-angular"></i></li>
+            <li class="list-inline-item"><i class="fab fa-react"></i></li>
+            <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
+            <li class="list-inline-item"><i class="fab fa-sass"></i></li>
+            <li class="list-inline-item"><i class="fab fa-less"></i></li>
+            <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
+            <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
+            <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
+            <li class="list-inline-item"><i class="fab fa-npm"></i></li>
+        </ul>
+        <ul class="fa-ul mb-0">
+            <li>
+                <span class="fa-li"><i class="fas fa-check"></i></span>
+                Cross Functional Teams
+            </li>
+            <li>
+                <span class="fa-li"><i class="fas fa-check"></i></span>
+                Agile Development & Scrum
+            </li>
+        </ul>
+    </div>
+</section>
+<hr class="m-0"/>
+
+</div>
+</body>
+</html>
