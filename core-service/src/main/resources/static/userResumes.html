@@ -35,8 +35,8 @@
                     <button class="btn btn-primary" ng-click="editResume(r.id)">Редактировать</button>
                 </td>
                 <td>
-                    <a href="http://localhost:8888/resume-core/mini/{{r.id}}" target="_blank" class="btn btn-warning" role="button">Мини-сайт</a>
-                    <button class="btn btn-light" ng-click="createPdf()">Скачать pdf</button>
+                    <a href="/resume-core/mini/{{r.id}}" target="_blank" class="btn btn-warning" role="button">Мини-сайт</a>
+                    <a href="/resume-core/api/v1/resumes/{{r.id}}/pdf" class="btn btn-light" nrole="button">Скачать pdf</a>
                 </td>
             </tr>
             </tbody>

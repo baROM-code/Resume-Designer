@@ -2,6 +2,7 @@ package ru.devteam.resume.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.devteam.resume.converters.ResumeConverter;
 import ru.devteam.resume.converters.UserConverter;
 import ru.devteam.resume.dtos.CreateNewResumeDto;
@@ -50,6 +51,7 @@ public class ResumeService {
         resumeRepository.save(resume);
     }
 
+    @Transactional
     public ResumeFullDto getFullResumeById(Long id) {
         ResumeFullDto resumeFullDto = resumeConverter.entityToFullDto(resumeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Резюме с id: " + id + " не найдено")));
         Long userId = resumeFullDto.getUserId();
