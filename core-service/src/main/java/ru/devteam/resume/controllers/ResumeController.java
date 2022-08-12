@@ -1,5 +1,7 @@
 package ru.devteam.resume.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -20,8 +22,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/resumes")
 @RequiredArgsConstructor
+@Tag(name="Резюме", description="")
+@RequestMapping("/api/v1/resumes")
 public class ResumeController {
     @Value("${storage.path}")
     private String path;
@@ -30,32 +33,38 @@ public class ResumeController {
     private final PdfFileService pdfFileService;
     private final FileStorageService fileStorageService;
 
+    @Operation(summary = "Получение всех резюме")
     @GetMapping
     public List<ResumeShortDto> getAllResumes() {
         return resumeService.findAll().stream().map(resumeConverter::entityToShortDto).collect(Collectors.toList());
     }
 
+    @Operation(summary = "Получение всех резюме пользователя по его id")
     @GetMapping("user/{userId}")
     public List<ResumeShortDto> getAllResumesByUserId(@PathVariable Long userId){
         return resumeService.findResumesByUserId(userId).stream().map(resumeConverter::entityToShortDto).collect(Collectors.toList());
     }
 
+    @Operation(summary = "Получение развернутого резюме по id")
     @GetMapping("/{id}")
     public ResumeFullDto getResumeById(@PathVariable Long id) {
         return resumeService.getFullResumeById(id);
     }
 
+    @Operation(summary = "Создание резюме")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void createNewResume(@RequestBody CreateNewResumeDto createNewResumeDto) {
         resumeService.createNew(createNewResumeDto);
     }
 
+    @Operation(summary = "Обновление резюме")
     @PutMapping("/update")
     public void updateResume(@RequestBody ResumeShortDto resumeShortDto) {
         resumeService.update(resumeConverter.shortDtoToEntity(resumeShortDto));
     }
 
+    @Operation(summary = "Выгрузка резюме в виде pdf файла")
     @GetMapping("/{id}/pdf")
     public ResponseEntity<Resource> genegatePdf(@PathVariable Long id){
         fileStorageService.init(path);
