@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light" style="background-color: #f0d8ce;" ng-controller="indexController">
+    <a class="navbar-brand" href="#">RESUME.designer</a>
+    <form class="form-inline" ng-show="!isUserLoggedIn()" ng-submit="tryToAuth()">
+        <input class="form-control mr-sm-2" ng-model="user.username" type="text" placeholder="Введите emal">
+        <input class="form-control mr-sm-2" ng-model="user.password" type="password" placeholder="Введите пароль">
+        <button class="btn btn-outline-info my-2 my-sm-0 ml-2" type="submit">Войти</button>
+        <button class="btn btn-outline-secondary my-2 my-sm-0 ml-2" ng-click="newUser()">Регистрация</button>
+    </form>
+    <form class="form-inline" ng-show="isUserLoggedIn()">
+        <a href="userResumes.html" class="btn btn-outline-success my-2 my-sm-0" role="button"
+            aria-pressed="true">Мои резюме</a>
+        <button class="btn btn-outline-secondary my-2 my-sm-0 ml-2" ng-click="tryToLogout()">Выйти</button>
+        <a class="navbar-text ml-2">{{nickname}}</a>
+    </form>
+</nav>

@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.devteam.resume.enums.ScheduleType;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 public class CreateNewResumeDto {

@@ -1,4 +1,4 @@
-package ru.devteam.utils;
+package  ru.devteam.resume.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -22,19 +22,19 @@ public class JwtTokenUtil {
     @Value("${jwt.lifetime}")
     private Integer jwtLifetime;
 
-
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails, Long userId) {
         Map<String, Object> claims = new HashMap<>();
-        /*
         List<String> rolesList = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
         claims.put("roles", rolesList);
-        */
+
+        claims.put("userid", userId);
+
         Date issuedDate = new Date();
         Date expiredDate = new Date(issuedDate.getTime() + jwtLifetime);
         return Jwts.builder()
-                //.setClaims(claims)
+                .setClaims(claims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(issuedDate)
                 .setExpiration(expiredDate)
@@ -53,10 +53,7 @@ public class JwtTokenUtil {
         return getAllClaimsFromToken(token).getSubject();
     }
 
-    /*
     public List<String> getRoles(String token) {
         return getAllClaimsFromToken(token).get("roles", List.class);
     }
-    */
-
 }
