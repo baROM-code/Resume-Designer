@@ -2,18 +2,14 @@ package ru.devteam.resume.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.devteam.resume.entities.Education;
-import ru.devteam.resume.entities.Work;
 import ru.devteam.resume.enums.GenderType;
 import ru.devteam.resume.enums.ScheduleType;
 import java.time.LocalDate;
 import java.util.List;
 
-import java.time.LocalDateTime;
-
 @Data
 @NoArgsConstructor
-public class ResumeDto {
+public class ResumeFullDto {
 
     private Long id;
     private Long userId;
@@ -29,10 +25,10 @@ public class ResumeDto {
     private Long salary;
     private ScheduleType schedule;
     private String aboutMyself;
-    private List<Work> works;
-    private List<Education> educations;
+    private List<WorkDto> works;
+    private List<EducationDto> educations;
 
-    public ResumeDto setUserData (UserDto userDto) {
+    public ResumeFullDto setUserData (UserDto userDto) {
         this.setPhoto(userDto.getPhoto());
         this.setFirstName(userDto.getFirstName());
         this.setLastName(userDto.getLastName());

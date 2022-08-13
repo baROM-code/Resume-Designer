@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 public class CreateNewWorkDto {
+    private Long userId;
     private String organization;
     private String post;
     private LocalDate startWork;

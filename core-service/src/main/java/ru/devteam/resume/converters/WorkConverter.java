@@ -1,21 +1,21 @@
 package ru.devteam.resume.converters;
 
 import org.springframework.stereotype.Component;
-import ru.devteam.resume.dtos.CreateNewWorkDto;
 import ru.devteam.resume.dtos.WorkDto;
 import ru.devteam.resume.entities.Work;
 
 @Component
 public class WorkConverter {
-    public CreateNewWorkDto entityToDto(Work w) {
-        CreateNewWorkDto createNewWorkDto = new CreateNewWorkDto();
-//        createNewWorkDto.setUserId(w.getUserId());
-        createNewWorkDto.setOrganization(w.getOrganization());
-        createNewWorkDto.setPost(w.getPost());
-        createNewWorkDto.setStartWork(w.getStartWork());
-        createNewWorkDto.setEndWork(w.getEndWork());
-        createNewWorkDto.setProgress(w.getProgress());
-        return createNewWorkDto;
+    public WorkDto entityToDto(Work work) {
+        WorkDto workDto = new WorkDto();
+        workDto.setId(work.getId());
+        workDto.setUserId(work.getUserId());
+        workDto.setOrganization(work.getOrganization());
+        workDto.setPost(work.getPost());
+        workDto.setStartWork(work.getStartWork());
+        workDto.setEndWork(work.getEndWork());
+        workDto.setProgress(work.getProgress());
+        return workDto;
     }
 
     public Work dtoToEntity (WorkDto workDto) {

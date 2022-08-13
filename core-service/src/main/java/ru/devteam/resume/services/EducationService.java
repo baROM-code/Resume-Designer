@@ -2,21 +2,20 @@ package ru.devteam.resume.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.devteam.resume.converters.EducationConverter;
 import ru.devteam.resume.dtos.CreateNewEducationDto;
+import ru.devteam.resume.dtos.EducationDto;
 import ru.devteam.resume.entities.Education;
-import ru.devteam.resume.entities.Work;
 import ru.devteam.resume.repositories.EducationRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class EducationService {
     private final EducationRepository educationRepository;
-
-    public List<Education> findAll() {
-        return educationRepository.findAll();
-    }
+    private final EducationConverter educationConverter;
 
     public void createNewEducation(CreateNewEducationDto educationDto) {
         Education education = new Education();
@@ -28,9 +27,15 @@ public class EducationService {
         educationRepository.save(education);
     }
 
-    public List<Education> findAllEducationsByUseId(Long userId) {
-        return educationRepository.findByUserId(userId);
+    public List<EducationDto> findAllEducationsByUseId(Long userId) {
+        return educationRepository.findByUserId(userId).stream().map(educationConverter::entityToDto).collect(Collectors.toList());
     }
 
-    public void update(Education education) { educationRepository.save(education); }
+    public void update(Education education) {
+        educationRepository.save(education);
+    }
+
+    public void delete(Long id) {
+        educationRepository.deleteById(id);
+    }
 }
