@@ -56,8 +56,8 @@ public class ResumeService {
         ResumeFullDto resumeFullDto = resumeConverter.entityToFullDto(resumeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Резюме с id: " + id + " не найдено")));
         Long userId = resumeFullDto.getUserId();
         resumeFullDto.setUserData(userConverter.entityToDto(userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("Пользователь с id: " + userId + " не найден"))));
-        resumeFullDto.setEducations(educationService.findAllEducationsByUseId(userId));
-        resumeFullDto.setWorks(workService.findAllWorksByUseId(userId));
+        resumeFullDto.setEducations(educationService.findAllEducationsByUserId(userId));
+        resumeFullDto.setWorks(workService.findAllWorksByUserId(userId));
         return  resumeFullDto;
     }
 }

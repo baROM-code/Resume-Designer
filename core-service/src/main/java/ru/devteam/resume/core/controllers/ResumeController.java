@@ -59,14 +59,14 @@ public class ResumeController {
     }
 
     @Operation(summary = "Обновление резюме")
-    @PutMapping("/update")
+    @PutMapping()
     public void updateResume(@RequestBody ResumeShortDto resumeShortDto) {
         resumeService.update(resumeConverter.shortDtoToEntity(resumeShortDto));
     }
 
     @Operation(summary = "Выгрузка резюме в виде pdf файла")
     @GetMapping("/{id}/pdf")
-    public ResponseEntity<Resource> genegatePdf(@PathVariable Long id){
+    public ResponseEntity<Resource> generatePdf(@PathVariable Long id){
         fileStorageService.init(path);
         String filename = pdfFileService.generate(resumeService.getFullResumeById(id));
         Resource file = fileStorageService.load(filename);

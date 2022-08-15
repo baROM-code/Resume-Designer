@@ -40,7 +40,7 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
                     $scope.loadResumesByUserId($localStorage.resumeData.userId);
                 });
         } else {
-            $http.put('http://localhost:8888/resume-core/api/v1/resumes/update', $scope.resume)
+            $http.put('http://localhost:8888/resume-core/api/v1/resumes', $scope.resume)
                 .then(function (){
                     $scope.loadResumesByUserId($localStorage.resumeData.userId);
                 });
@@ -59,14 +59,14 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
     };
 
     $scope.updateWork = function (work) {
-        $http.put('http://localhost:8888/resume-core/api/v1/works/update/', work)
+        $http.put('http://localhost:8888/resume-core/api/v1/works', work)
             .then(function () {
                 $scope.loadWorksByUserId($localStorage.resumeData.userId);
             });
     };
 
     $scope.deleteWork = function (id) {
-        $http.delete('http://localhost:8888/resume-core/api/v1/works/delete/' + id)
+        $http.delete('http://localhost:8888/resume-core/api/v1/works/' + id)
             .then(function () {
                 $scope.loadWorksByUserId($localStorage.resumeData.userId);
             });
@@ -92,7 +92,14 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
     };
 
     $scope.updateEducation = function (education) {
-        $http.put('http://localhost:8888/resume-core/api/v1/educations/update/', education)
+        $http.put('http://localhost:8888/resume-core/api/v1/educations', education)
+            .then(function () {
+                $scope.loadEducationsByUserId($localStorage.resumeData.userId);
+            });
+    };
+
+    $scope.deleteEducation = function (id) {
+        $http.delete('http://localhost:8888/resume-core/api/v1/educations/' + id)
             .then(function () {
                 $scope.loadEducationsByUserId($localStorage.resumeData.userId);
             });

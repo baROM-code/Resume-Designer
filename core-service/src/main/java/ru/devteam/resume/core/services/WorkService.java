@@ -32,7 +32,7 @@ public class WorkService {
         workRepository.save(work);
     }
 
-    public List<WorkDto> findAllWorksByUseId(Long userId) {
+    public List<WorkDto> findAllWorksByUserId(Long userId) {
         return workRepository.findByUserId(userId).stream().map(workConverter::entityToDto).collect(Collectors.toList());
     }
 

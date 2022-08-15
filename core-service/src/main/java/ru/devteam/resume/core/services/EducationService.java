@@ -27,7 +27,7 @@ public class EducationService {
         educationRepository.save(education);
     }
 
-    public List<EducationDto> findAllEducationsByUseId(Long userId) {
+    public List<EducationDto> findAllEducationsByUserId(Long userId) {
         return educationRepository.findByUserId(userId).stream().map(educationConverter::entityToDto).collect(Collectors.toList());
     }
 

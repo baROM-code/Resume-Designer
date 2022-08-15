@@ -29,7 +29,7 @@ public class UserController {
     @Operation(summary = "Регистрация пользователя")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void CreateNewUser(@RequestBody CreateNewUserDto createNewUserDto) {
+    public void createNewUser(@RequestBody CreateNewUserDto createNewUserDto) {
         userService.createNewUser(createNewUserDto);
     }
 

@@ -22,8 +22,8 @@ public class EducationController {
 
     @Operation(summary = "Получение всех записей о учебе пользователя по его id")
     @GetMapping("/user/{userId}")
-    public List<EducationDto> getAllEducationsUserId(@PathVariable Long userId) {
-        return educationService.findAllEducationsByUseId(userId);
+    public List<EducationDto> getAllEducationsByUserId(@PathVariable Long userId) {
+        return educationService.findAllEducationsByUserId(userId);
     }
 
     @Operation(summary = "Создание записи о учебе")
@@ -34,13 +34,13 @@ public class EducationController {
     }
 
     @Operation(summary = "Обновление записи о учебе")
-    @PutMapping("/update")
+    @PutMapping()
     public void updateEducation(@RequestBody EducationDto educationDto) {
         educationService.update(educationConverter.dtoToEntity(educationDto));
     }
 
     @Operation(summary = "Удаление записи о учебе")
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEducation(@PathVariable Long id) {
         educationService.delete(id);
     }

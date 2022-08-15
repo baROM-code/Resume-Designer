@@ -22,8 +22,8 @@ public class WorkController {
 
     @Operation(summary = "Получение всех записей о работе пользователя по его id")
     @GetMapping("/user/{userId}")
-    public List<WorkDto> getAllWorksUserId(@PathVariable Long userId) {
-        return workService.findAllWorksByUseId(userId);
+    public List<WorkDto> getAllWorksByUserId(@PathVariable Long userId) {
+        return workService.findAllWorksByUserId(userId);
     }
 
     @Operation(summary = "Создание записи о работе")
@@ -34,13 +34,13 @@ public class WorkController {
     }
 
     @Operation(summary = "Обновление записи о работе")
-    @PutMapping("/update")
+    @PutMapping()
     public void updateWork(@RequestBody WorkDto workDto) {
         workService.update(workConverter.dtoToEntity(workDto));
     }
 
     @Operation(summary = "Удаление записи о работе")
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteWork(@PathVariable Long id) {
         workService.delete(id);
     }
