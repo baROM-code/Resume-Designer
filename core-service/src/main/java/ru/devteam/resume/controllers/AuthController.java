@@ -7,10 +7,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import ru.devteam.resume.exceptions.AppError;
 import ru.devteam.resume.services.UserService;
 import ru.devteam.resume.utils.JwtTokenUtil;
@@ -38,4 +36,20 @@ public class AuthController {
         String token = jwtTokenUtil.generateToken(userDetails, userId);
         return ResponseEntity.ok(new JwtResponse(token));
     }
+
+    @GetMapping("/register")
+    public String registerForm(@RequestParam String username, @RequestParam String password,
+                               @RequestParam String firstname, @RequestParam String lastname, Model model){
+
+        String token = userService.sighUp(username, password, firstname, lastname);
+        model.addAttribute("token", token);
+
+        return "register-confirm";
+    }
+
+    @PostMapping("/register")
+    public String register(){
+        return "register";
+    }
+
 }
