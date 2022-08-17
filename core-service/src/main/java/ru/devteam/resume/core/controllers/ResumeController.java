@@ -17,7 +17,9 @@ import ru.devteam.resume.core.dtos.ResumeShortDto;
 import ru.devteam.resume.core.services.FileStorageService;
 import ru.devteam.resume.core.services.PdfFileService;
 import ru.devteam.resume.core.services.ResumeService;
+import ru.devteam.resume.core.services.UserService;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,16 +34,21 @@ public class ResumeController {
     private final ResumeConverter resumeConverter;
     private final PdfFileService pdfFileService;
     private final FileStorageService fileStorageService;
+    private final UserService userService;
 
+    /*
     @Operation(summary = "Получение всех резюме")
     @GetMapping
     public List<ResumeShortDto> getAllResumes() {
         return resumeService.findAll().stream().map(resumeConverter::entityToShortDto).collect(Collectors.toList());
     }
+     */
 
-    @Operation(summary = "Получение всех резюме пользователя по его id")
-    @GetMapping("user/{userId}")
-    public List<ResumeShortDto> getAllResumesByUserId(@PathVariable Long userId){
+    @Operation(summary = "Список резюме текущего пользователя")
+    @GetMapping("/user")
+    public List<ResumeShortDto> getAllResumesByUser(Principal principal){
+        if (principal == null) {return null;}
+        Long userId = userService.findByEmail(principal.getName()).get().getId();
         return resumeService.findResumesByUserId(userId).stream().map(resumeConverter::entityToShortDto).collect(Collectors.toList());
     }
 
@@ -76,5 +83,4 @@ public class ResumeController {
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(file);
     }
-
 }

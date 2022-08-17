@@ -20,7 +20,7 @@ import java.util.Optional;
 public class ResumeService {
     private final ResumeRepository resumeRepository;
     private final ResumeConverter resumeConverter;
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final UserConverter userConverter;
     private final EducationService educationService;
     private final WorkService workService;
@@ -55,7 +55,7 @@ public class ResumeService {
     public ResumeFullDto getFullResumeById(Long id) {
         ResumeFullDto resumeFullDto = resumeConverter.entityToFullDto(resumeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Резюме с id: " + id + " не найдено")));
         Long userId = resumeFullDto.getUserId();
-        resumeFullDto.setUserData(userConverter.entityToDto(userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("Пользователь с id: " + userId + " не найден"))));
+        resumeFullDto.setUserData(userConverter.entityToDto(userService.findById(userId).orElseThrow(() -> new ResourceNotFoundException("Пользователь с id: " + userId + " не найден"))));
         resumeFullDto.setEducations(educationService.findAllEducationsByUserId(userId));
         resumeFullDto.setWorks(workService.findAllWorksByUserId(userId));
         return  resumeFullDto;

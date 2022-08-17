@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.devteam.resume.core.converters.WorkConverter;
 import ru.devteam.resume.core.dtos.CreateNewWorkDto;
 import ru.devteam.resume.core.dtos.WorkDto;
+import ru.devteam.resume.core.services.UserService;
 import ru.devteam.resume.core.services.WorkService;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -19,10 +21,13 @@ import java.util.List;
 public class WorkController {
     private final WorkService workService;
     private final WorkConverter workConverter;
+    private final UserService userService;
 
-    @Operation(summary = "Получение всех записей о работе пользователя по его id")
-    @GetMapping("/user/{userId}")
-    public List<WorkDto> getAllWorksByUserId(@PathVariable Long userId) {
+    @Operation(summary = "Получение всех записей о работе текущего пользователя")
+    @GetMapping("/user")
+    public List<WorkDto> getAllWorksByUserId(Principal principal) {
+        if (principal == null) {return null;}
+        Long userId = userService.findByEmail(principal.getName()).get().getId();
         return workService.findAllWorksByUserId(userId);
     }
 

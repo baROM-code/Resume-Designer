@@ -10,8 +10,8 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
             });
     };
 
-    $scope.loadResumesByUserId = function (userId) {
-        $http.get('http://localhost:8888/resume-core/api/v1/resumes/user/' + userId)
+    $scope.loadResumesByUser = function () {
+        $http.get('http://localhost:8888/resume-core/api/v1/resumes/user/')
             .then(function (response) {
                 $scope.resumes = response.data;
             });
@@ -25,8 +25,8 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
     }
 
     $scope.newResume = function () {
-        $scope.loadWorksByUserId($localStorage.resumeData.userId);
-        $scope.loadEducationsByUserId($localStorage.resumeData.userId)
+        $scope.loadWorksByUser();
+        $scope.loadEducationsByUser()
         $scope.resume = null;
         $scope.btnEditResume = true;
         $scope.isNewResume = true;
@@ -37,22 +37,21 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
         if ($scope.isNewResume) {
             $http.post('http://localhost:8888/resume-core/api/v1/resumes', $scope.resume)
                 .then(function (){
-                    $scope.loadResumesByUserId($localStorage.resumeData.userId);
+                    $scope.loadResumesByUser();
                 });
         } else {
             $http.put('http://localhost:8888/resume-core/api/v1/resumes', $scope.resume)
                 .then(function (){
-                    $scope.loadResumesByUserId($localStorage.resumeData.userId);
+                    $scope.loadResumesByUser();
                 });
             $scope.resumeId = null;
         };
         $scope.resume = null;
         $scope.btnEditResume = false;
-
     }
 
-    $scope.loadWorksByUserId = function (userId) {
-        $http.get('http://localhost:8888/resume-core/api/v1/works/user/' + userId)
+    $scope.loadWorksByUser = function () {
+        $http.get('http://localhost:8888/resume-core/api/v1/works/user/')
             .then(function (response) {
                 $scope.works = response.data;
             });
@@ -61,14 +60,14 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
     $scope.updateWork = function (work) {
         $http.put('http://localhost:8888/resume-core/api/v1/works', work)
             .then(function () {
-                $scope.loadWorksByUserId($localStorage.resumeData.userId);
+                $scope.loadWorksByUser();
             });
     };
 
     $scope.deleteWork = function (id) {
         $http.delete('http://localhost:8888/resume-core/api/v1/works/' + id)
             .then(function () {
-                $scope.loadWorksByUserId($localStorage.resumeData.userId);
+                $scope.loadWorksByUser();
             });
     };
 
@@ -79,13 +78,13 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
                 .then(function () {
                     $scope.newWork = null;
                     $scope.btnAddWork = !$scope.btnAddWork;
-                    $scope.loadWorksByUserId($localStorage.resumeData.userId);
+                    $scope.loadWorksByUser();
                 });
         }
     }
 
-    $scope.loadEducationsByUserId = function (userId) {
-        $http.get('http://localhost:8888/resume-core/api/v1/educations/user/' + userId)
+    $scope.loadEducationsByUser = function () {
+        $http.get('http://localhost:8888/resume-core/api/v1/educations/user/')
             .then(function (response) {
                 $scope.educations = response.data;
             });
@@ -94,14 +93,14 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
     $scope.updateEducation = function (education) {
         $http.put('http://localhost:8888/resume-core/api/v1/educations', education)
             .then(function () {
-                $scope.loadEducationsByUserId($localStorage.resumeData.userId);
+                $scope.loadEducationsByUser();
             });
     };
 
     $scope.deleteEducation = function (id) {
         $http.delete('http://localhost:8888/resume-core/api/v1/educations/' + id)
             .then(function () {
-                $scope.loadEducationsByUserId($localStorage.resumeData.userId);
+                $scope.loadEducationsByUser();
             });
     };
 
@@ -112,12 +111,13 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
                 .then(function () {
                     $scope.newEducation = null;
                     $scope.btnAddEducation = !$scope.btnAddEducation;
-                    $scope.loadEducationsByUserId($localStorage.resumeData.userId);
+                    $scope.loadEducationsByUser();
                 });
         }
     }
 
     if ($localStorage.resumeData) {
-        $scope.loadResumesByUserId($localStorage.resumeData.userId);
+        $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.resumeData.token;
+        $scope.loadResumesByUser();
     }
 });
