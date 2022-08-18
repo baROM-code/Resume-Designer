@@ -37,8 +37,8 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @GetMapping("/register")
-    public String registerForm(@RequestParam String username, @RequestParam String password,
+    @PostMapping("/register")
+    public String register(@RequestParam String username, @RequestParam String password,
                                @RequestParam String firstname, @RequestParam String lastname, Model model){
 
         String token = userService.sighUp(username, password, firstname, lastname);
@@ -47,9 +47,12 @@ public class AuthController {
         return "register-confirm";
     }
 
-    @PostMapping("/register")
-    public String register(){
-        return "register";
+    @GetMapping("/register/confirm")
+    public String registerConfirm(@RequestParam String token){
+        if(userService.confirmRegistration(token)){
+            return "register-complete";
+        }
+        return "redirect:/";
     }
 
 }

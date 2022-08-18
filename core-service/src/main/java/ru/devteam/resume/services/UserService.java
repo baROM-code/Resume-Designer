@@ -1,7 +1,6 @@
 package ru.devteam.resume.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -68,7 +67,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     public String sighUp(String email, String password, String firstname, String lastname) {
         boolean userExist = userRepository.findByEmail(email).isPresent();
-        if (userExist){
+        if (userExist) {
             throw new IllegalStateException("Пользователь с таким email уже есть в системе");
         }
         var user = new User();
@@ -84,5 +83,15 @@ public class UserService implements UserDetailsService {
         registrationTokenRepository.save(new RegistrationToken(tokenUid, LocalDateTime.now().plusMinutes(15), user));
 
         return tokenUid;
+    }
+
+    @Transactional
+    public boolean confirmRegistration(String token) {
+        var user = registrationTokenRepository.findUserByToken(LocalDateTime.now(), token);
+        if (user.isEmpty()) {
+            return false;
+        }
+        user.ifPresent(u -> u.setEnabled(true));
+        return true;
     }
 }
