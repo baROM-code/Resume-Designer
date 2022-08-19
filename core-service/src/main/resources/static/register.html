@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html ng-app="resume">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>резюме</title>
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="top_cont">
+    <div class="container top_box">
+        <ul class="header">
+            <li><a href="index.html"><img src="img/logo.svg" alt="logo">Главная</a></li>
+            <li><a href="resume.html"><img src="img/kontact.svg" alt="kontact">Резюме</a>
+                <a href="login.html"><img src="img/kontact.svg" alt="kontact">Вход</a></li>
+        </ul>
+    </div>
+</div>
+<div class="top__info_heading">
+    <h2 class="head-contact">Форма создания резюме</h2>
+    <p class="projec__text_cont">Пока контакты, но можно разместить несколько форм заполнения резюме. </p>
+</div>
+<div class="contact">
+    <div class="container">
+        <div class="contactlist__container" ng-controller = "indexController">
+            <div class="contactlist-right" ng-controller = "indexController">
+                <div class="contactlist-right-container" ng-controller = "indexController">
+                    <h4 class="head_text_message">ОСНОВНАЯ ИНФОРМАЦИЯ</h4>
+                    <form ng-submit="registerUser()">
+                        <p></p>
+                        <input class="contactlist__message_name_input" type="text" id="newFirstName" ng-model="register.firstName" placeholder="Имя">
+                        <input class="contactlist__message_name_input" type="text" id="newLastName" ng-model="register.lastName" placeholder="Фамилия">
+                        <input class="contactlist__message_name_input" type="password" id="newPassword" ng-model="register.password" placeholder="Пароль">
+                        <input class="contactlist__message_name_input" type="email" id="newEmail" ng-model="register.email" placeholder="mail@mail.ru">
+                        <input class="contactlist__message_name_input" type="text" id="newGender" ng-model="register.gender" placeholder="Муж/Жен">
+                        <input class="contactlist__message_name_input" type="date" id="newDateofbirth" ng-model="register.dateOfBirth" placeholder=Дата Рождения>
+                        <input class="contactlist__message_name_input" type="text" id="newPhoto" ng-model="register.photo" placeholder="Фото">
+                        <p></p>
+                        <button class="contactlist__message_name_button" type="submit" ng-click="registerUser()">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer__tab container">
+        <div class="footer__top_button">
+            <div class="footer_button1">
+                <h3 class="footer__head_text">Заголовок текста подвала</h3>
+                <div class="footer__top1">
+                    <p class="footer__text">Текст подвала, consectetur adipisicing elit, sed do
+                        eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                </div>
+            </div>
+            <div class="footer_button">
+                <a href="#" class="footer__button_btn">Вверх</a>
+            </div>
+        </div>
+        <hr class="footer__bottom_ras">
+        <div class="footer__bottom">
+            <div class="footer__bottom_list">
+                <ul class="footer_contacts text_footer">
+                    <li class="footer_contact_item">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                    <li class="footer_contact_item">+7(999) 999-22-11</li>
+                    <li class="footer_contact_item">mailito@mail.ru</li>
+                </ul>
+                <div class="footer__copy">
+                    <p class="footer__text-bottom_copy">2022 © All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

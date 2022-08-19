@@ -13,6 +13,7 @@ import ru.devteam.resume.dtos.CreateNewUserDto;
 import ru.devteam.resume.entities.RegistrationToken;
 import ru.devteam.resume.entities.Role;
 import ru.devteam.resume.entities.User;
+import ru.devteam.resume.enums.GenderType;
 import ru.devteam.resume.repositories.RegistrationTokenRepository;
 import ru.devteam.resume.repositories.RoleRepository;
 import ru.devteam.resume.repositories.UserRepository;
@@ -65,15 +66,16 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public String sighUp(String email, String password, String firstname, String lastname) {
+    public String sighUp(String email, String password, String firstName, String lastName, String gender) {
         boolean userExist = userRepository.findByEmail(email).isPresent();
         if (userExist) {
             throw new IllegalStateException("Пользователь с таким email уже есть в системе");
         }
         var user = new User();
         user.setEmail(email);
-        user.setFirstName(firstname);
-        user.setLastName(lastname);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setGender(GenderType.valueOf(gender));
         user.setPassword(bCryptPasswordEncoder.encode(password));
         user.setEnabled(false);
         user.setRoles(Set.of(roleRepository.findByName("ROLE_USER")));
