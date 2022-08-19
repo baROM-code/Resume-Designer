@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
     <script src="index.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -31,21 +31,21 @@
     <h2 class="head-contact">Форма создания резюме</h2>
     <p class="projec__text_cont">Пока контакты, но можно разместить несколько форм заполнения резюме. </p>
 </div>
-<div class="contact">
+<div class="contact" ng-controller = "resumeController">
     <div class="container">
-        <div class="contactlist__container" ng-controller = "indexController">
-            <div class="contactlist-right" ng-controller = "indexController">
-                <div class="contactlist-right-container" ng-controller = "indexController">
+        <div class="contactlist__container" ng-controller = "resumeController">
+            <div class="contactlist-right" ng-controller = "resumeController">
+                <div class="contactlist-right-container" ng-controller = "resumeController">
                     <h4 class="head_text_message">ОСНОВНАЯ ИНФОРМАЦИЯ</h4>
                     <form ng-submit="registerUser()">
                         <p></p>
-                        <input class="contactlist__message_name_input" type="text" id="newFirstName" ng-model="register.firstName" placeholder="Имя">
-                        <input class="contactlist__message_name_input" type="text" id="newLastName" ng-model="register.lastName" placeholder="Фамилия">
-                        <input class="contactlist__message_name_input" type="password" id="newPassword" ng-model="register.password" placeholder="Пароль">
-                        <input class="contactlist__message_name_input" type="email" id="newEmail" ng-model="register.email" placeholder="mail@mail.ru">
-                        <input class="contactlist__message_name_input" type="text" id="newGender" ng-model="register.gender" placeholder="Муж/Жен">
-                        <input class="contactlist__message_name_input" type="date" id="newDateofbirth" ng-model="register.dateOfBirth" placeholder=Дата Рождения>
-                        <input class="contactlist__message_name_input" type="text" id="newPhoto" ng-model="register.photo" placeholder="Фото">
+                        <input class="contactlist__message_name_input" type="text" id="newFirstName" ng-model="sighUp.firstName" placeholder="Имя">
+                        <input class="contactlist__message_name_input" type="text" id="newLastName" ng-model="sighUp.lastName" placeholder="Фамилия">
+                        <input class="contactlist__message_name_input" type="password" id="newPassword" ng-model="sighUp.password" placeholder="Пароль">
+                        <input class="contactlist__message_name_input" type="email" id="newEmail" ng-model="sighUp.email" placeholder="mail@mail.ru">
+                        <input class="contactlist__message_name_input" type="text" id="newGender" ng-model="sighUp.gender" placeholder="Муж/Жен">
+                        <input class="contactlist__message_name_input" type="date" id="newDateOfBirth" ng-model="sighUp.dateOfBirth" placeholder=Дата Рождения>
+                        <input class="contactlist__message_name_input" type="text" id="newPhoto" ng-model="sighUp.photo" placeholder="Фото">
                         <p></p>
                         <button class="contactlist__message_name_button" type="submit" ng-click="registerUser()">Отправить</button>
                     </form>

@@ -33,6 +33,7 @@ public class UserService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final RoleRepository roleRepository;
     private final RegistrationTokenRepository registrationTokenRepository;
+    private final EmailService emailService;
 
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
@@ -83,6 +84,8 @@ public class UserService implements UserDetailsService {
 
         String tokenUid = UUID.randomUUID().toString();
         registrationTokenRepository.save(new RegistrationToken(tokenUid, LocalDateTime.now().plusMinutes(15), user));
+
+        emailService.sendVarificationLink(email, tokenUid);
 
         return tokenUid;
     }

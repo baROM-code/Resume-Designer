@@ -38,7 +38,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestParam String email, @RequestParam String password,
+    public String registery(@RequestParam String email, @RequestParam String password,
                                @RequestParam String firstName, @RequestParam String lastName, @RequestParam String gender, Model model){
 
         String token = userService.sighUp(email, password, firstName, lastName, gender);

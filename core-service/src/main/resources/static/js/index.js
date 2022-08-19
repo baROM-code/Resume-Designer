@@ -1,4 +1,5 @@
 angular.module('resume', ['ngStorage']).controller('indexController', function ($scope, $http, $localStorage) {
+
     if ($localStorage.resumeData) {
         try {
             let jwt = $localStorage.resumeData.token;
@@ -50,12 +51,5 @@ angular.module('resume', ['ngStorage']).controller('indexController', function (
         }
     };
 
-    $scope.registerUser = function () {
-        $http.post('http://localhost:8888/resume-core/auth/register', $scope.register)
-            .then(function successCallback(response) {
-
-            }, function errorCallback(response) {
-            });
-    };
 
 });
