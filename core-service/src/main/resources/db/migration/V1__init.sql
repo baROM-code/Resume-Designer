@@ -8,8 +8,17 @@ create table users
     gender        char,
     dateofbirth   date,
     email         varchar(50) unique,
+    enabled        boolean,
     created_at    timestamp default current_timestamp,
     updated_at    timestamp default current_timestamp
+);
+
+create table registration_tokens
+(
+    id            bigserial primary key,
+    token         varchar(255),
+    expired_at    timestamp not null ,
+    user_id       bigint references users (id)
 );
 
 create table works
@@ -70,9 +79,9 @@ insert into roles (name)
 values ('ROLE_USER'),
        ('ROLE_ADMIN');
 
-insert into users (firstname, lastname, password, gender, dateofbirth, email, photo)
-values ('Иван', 'Иванов', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'M', '1980-01-01', 'ivan@email.ru', 'https://pokleikaoboev.ru/wp-content/uploads/2015/10/infochel1.jpg'),
-       ('Екатерина', 'Ли', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'M', '1985-05-01', 'katya@email.ru', 'https://hopeci.org/wp-content/uploads/2019/06/woman-blank-image.jpg');
+insert into users (firstname, lastname, password, gender, dateofbirth, email, photo, enabled)
+values ('Иван', 'Иванов', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'M', '1980-01-01', 'ivan@email.ru', 'https://pokleikaoboev.ru/wp-content/uploads/2015/10/infochel1.jpg', 'true'),
+       ('Екатерина', 'Ли', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'M', '1985-05-01', 'katya@email.ru', 'https://hopeci.org/wp-content/uploads/2019/06/woman-blank-image.jpg', 'true');
 
 insert into users_roles (user_id, role_id)
 values (1, 1),

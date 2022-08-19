@@ -113,4 +113,14 @@ app.controller('resumeController', function ($scope, $http, $localStorage) {
     if ($localStorage.resumeData) {
         $scope.loadResumesByUserId($localStorage.resumeData.userId);
     }
+
+
+    $scope.registerUser = function () {
+        $http.post('http://localhost:8888/resume-core/auth/register', $scope.sighUp)
+            .then(function successCallback(response) {
+
+            }, function errorCallback(response) {
+            });
+    };
+
 });

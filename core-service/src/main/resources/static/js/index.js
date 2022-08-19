@@ -1,4 +1,5 @@
 angular.module('resume', ['ngStorage']).controller('indexController', function ($scope, $http, $localStorage) {
+
     if ($localStorage.resumeData) {
         try {
             let jwt = $localStorage.resumeData.token;
@@ -49,5 +50,6 @@ angular.module('resume', ['ngStorage']).controller('indexController', function (
             return false;
         }
     };
+
 
 });

@@ -7,10 +7,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import ru.devteam.resume.exceptions.AppError;
 import ru.devteam.resume.services.UserService;
 import ru.devteam.resume.utils.JwtTokenUtil;
@@ -38,4 +36,23 @@ public class AuthController {
         String token = jwtTokenUtil.generateToken(userDetails, userId);
         return ResponseEntity.ok(new JwtResponse(token));
     }
+
+    @PostMapping("/register")
+    public String registery(@RequestParam String email, @RequestParam String password,
+                               @RequestParam String firstName, @RequestParam String lastName, @RequestParam String gender, Model model){
+
+        String token = userService.sighUp(email, password, firstName, lastName, gender);
+        model.addAttribute("token", token);
+
+        return "register-confirm";
+    }
+
+    @GetMapping("/register/confirm")
+    public String registerConfirm(@RequestParam String token){
+        if(userService.confirmRegistration(token)){
+            return "register-complete";
+        }
+        return "redirect:/";
+    }
+
 }
